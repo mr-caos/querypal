@@ -17,7 +17,7 @@ Parameters:
   pQuerypalGitHubRepo:
     Description: Querypal GitHUb repository. Default is the OSS version. This might change if you decide customize Querypal
     Type: String
-    Default: https://github.com/OElesin/querypal
+    Default: https://github.com/mr-caos/querypal
   pQuerypalAppName:
     Description: Querypal AWS Amplify App Name
     Type: String
@@ -55,9 +55,11 @@ Resources:
           phases:
             preBuild:
               commands:
+                - npm config set strict-ssl false
                 - yarn install
             build:
               commands:
+                - npm config set strict-ssl false
                 - yarn run build
           artifacts:
             baseDirectory: dist
