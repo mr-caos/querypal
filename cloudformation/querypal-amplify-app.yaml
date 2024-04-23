@@ -55,11 +55,10 @@ Resources:
           phases:
             preBuild:
               commands:
-                - npm config set strict-ssl false
+                - npm config set registry http://registry.npmjs.org/
                 - yarn install
             build:
               commands:
-                - npm config set strict-ssl false
                 - yarn run build
           artifacts:
             baseDirectory: dist
