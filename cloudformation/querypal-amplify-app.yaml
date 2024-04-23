@@ -95,7 +95,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: app.lambda_handler
-      Runtime: python3.7
+      Runtime: python3.8
       CodeUri: ./function_app_deploy/
       Policies:
         - AWSLambdaExecute

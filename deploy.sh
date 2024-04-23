@@ -73,14 +73,14 @@ if ! $bflag
 then
     echo "-b not specified, using generating a random s3 name" >&2
     S3_SAM_BUCKET=$(openssl rand -hex 20)
-    aws s3 mb "s3://${S3_SAM_BUCKET}"
+    aws --profile $PROFILE s3 mb "s3://${S3_SAM_BUCKET}"
 fi
 
 
 echo "Deploying Querypal Amplify App Stack"
-sam build --template cloudformation/querypal-amplify-app.yaml --build-dir build --use-container --build-image Function1=amazon/aws-sam-cli-build-image-python3.8
+sam.cmd build --profile $PROFILE --template cloudformation/querypal-amplify-app.yaml --build-dir build --use-container --build-image Function1=amazon/aws-sam-cli-build-image-python3.8
 
-sam deploy --stack-name ${STACK_NAME} \
+sam.cmd deploy --stack-name ${STACK_NAME} \
   --profile $PROFILE \
   --region $REGION \
   --stack-name $STACK_NAME \
