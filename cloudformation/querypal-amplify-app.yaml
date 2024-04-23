@@ -55,7 +55,7 @@ Resources:
           phases:
             preBuild:
               commands:
-                - npm config set registry http://registry.npmjs.org/
+                - yarn config set enableStrictSsl false
                 - yarn install
             build:
               commands:
